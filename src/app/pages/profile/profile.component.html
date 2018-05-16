@@ -6,8 +6,17 @@
 <!-- else -->
 <div class="card" *ngIf="user">
 
+<!--   NAV BAR -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" a [routerLink]="['/chat']">Back to the Chat</a>
+    </div>
+  </div>
+</nav>
+
+<!-- BODY -->
 <div class="profile-page">
-  <a [routerLink]="['/chat']">Back</a>
   <!-- FORM -->
   <form (ngSubmit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
     <!-- left side of profile page -->

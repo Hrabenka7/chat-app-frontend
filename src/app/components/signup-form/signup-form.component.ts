@@ -17,7 +17,7 @@ export class SignupFormComponent implements OnInit {
   cohort = '';
   email: string;
   password: string;
-
+  terms: boolean;
 
   constructor(private authService: AuthService, private router: Router) { }
 

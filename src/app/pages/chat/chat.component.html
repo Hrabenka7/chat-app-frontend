@@ -43,8 +43,10 @@
 <footer class="navbar navbar-fixed-bottom chat-input">
   <form class="container-fluid">
     <i class="fa fa-comments"></i>
-    <input type="text" maxlength="250" name="message" placeholder="Type your message here" #inputMessage [(ngModel)]="messageContent" 
-  (keyup.enter)="sendMessage(messageContent)">
+   <!--  <input type="text" maxlength="250" name="message" placeholder="Type your message here" #inputMessage [(ngModel)]="messageContent" 
+  (keyup.enter)="sendMessage(messageContent)"> -->
+   <input type="text" maxlength="250" name="message" placeholder="Type your message here">
+
   <button> Send </button>
 
   <button class="btn btn-danger navbar-btn align-right" (click)="logout()">Leave the conversation</button>

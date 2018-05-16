@@ -135,3 +135,10 @@ input {
   font-family:'Montserrat Alternates', sans-serif;
   font-weight: 400;
 }
+
+.navbar-default{
+  background-color: #46A8AA;
+  border: none!important;
+  height: 5vh;
+  border-radius: 0%;
+}

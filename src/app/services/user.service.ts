@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 
+import { environment } from '../../environments/environment';
+
 @Injectable()
 export class UserService {
 
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = environment.apiUrl + '/profile';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -14,31 +16,15 @@ export class UserService {
     const options = {
       withCredentials: true
     };
-    return this.httpClient.get(`${this.baseUrl}/profile/${id}`, options)
+    return this.httpClient.get(`${this.baseUrl}/${id}`, options)
       .toPromise();
   }
 
-  /* create(movie): Promise<any> {
+  update(user): Promise<any> {
     const options = {
       withCredentials: true
     };
-    return this.httpClient.post(`${this.baseUrl}/movies`, movie, options)
+    return this.httpClient.put(`${this.baseUrl}/${user._id}`, user, options)
       .toPromise();
   }
-
-  update(movie): Promise<any> {
-    const options = {
-      withCredentials: true
-    };
-    return this.httpClient.put(`${this.baseUrl}/movies/${movie._id}`, movie, options)
-      .toPromise();
-  }
-
-  deleteOne(id: string): Promise<any> {
-    const options = {
-      withCredentials: true
-    };
-    return this.httpClient.delete(`${this.baseUrl}/movies/${id}`, options)
-      .toPromise();
-  } */
 }

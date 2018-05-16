@@ -11,7 +11,7 @@ import { UserService } from '../../services/user.service';
 })
 
 export class ChatComponent implements OnInit {
-  user: Object;
+  user: any;
 
   constructor(private authService: AuthService, private userService: UserService,
     private router: Router, private activatedRoute: ActivatedRoute) { }

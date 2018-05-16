@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable'; // async, Observable sends notific
 import { Subject } from 'rxjs/Subject'; // inherits both Observable and Observer, publication and subscription combined in one source
 import 'rxjs/add/operator/toPromise'; // adds toPromise property to Observable type
 
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
@@ -12,7 +13,7 @@ export class AuthService {
   private user: any;
   private userChange: Subject<any> = new Subject();
 
-  private API_URL = 'http://localhost:3000/auth';   // path of backend
+  private baseUrl = environment.apiUrl + '/auth';   // path of backend
 
   userChange$: Observable<any> = this.userChange.asObservable();  // userChange of type Subject will act like Observable now
 
@@ -30,7 +31,7 @@ export class AuthService {
       withCredentials: true
     };
 
-    return this.httpClient.post(`${this.API_URL}/signup`, user, options)
+    return this.httpClient.post(`${this.baseUrl}/signup`, user, options)
       .toPromise()
       .then((data) => this.setUser(data));
   }
@@ -41,7 +42,7 @@ export class AuthService {
       withCredentials: true
     };
 
-    return this.httpClient.post(`${this.API_URL}/login`, user, options)
+    return this.httpClient.post(`${this.baseUrl}/login`, user, options)
       .toPromise()
       .then((data) => this.setUser(data));
   }
@@ -51,18 +52,22 @@ export class AuthService {
      const options = {
        withCredentials: true
      };
-     return this.httpClient.post(`${this.API_URL}/logout`, {}, options)
+     return this.httpClient.post(`${this.baseUrl}/logout`, {}, options)
        .toPromise()
        .then(() => this.setUser());
    }
 
-  me(): Promise<any> {
+   // ################################ GET-USER FUNCTION ##########################//
+   getUser(): any {
+     return this.user;
+   }
 
+  // ################################ ME FUNCTION ##########################//
+  me(): Promise<any> {
     const options = {
       withCredentials: true
     };
-
-    return this.httpClient.get(`${this.API_URL}/me`, options)
+    return this.httpClient.get(`${this.baseUrl}/me`, options)
     .toPromise()
     .then((user) => this.setUser(user))
     .catch((err) => {
@@ -70,9 +75,5 @@ export class AuthService {
           this.setUser();
         }
       });
-  }
-
-  getUser(): any {
-    return this.user;
   }
 }
