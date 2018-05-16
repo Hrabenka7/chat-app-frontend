@@ -115,3 +115,23 @@ input {
   box-shadow: none;
   outline: none;
 }
+
+
+.value-heading::placeholder{
+  font-size: 25px;
+  
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-size: 25px;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    font-size: 25px;
+}
+
+.label{
+  font-size: 17px;
+  color: black;
+  font-family:'Montserrat Alternates', sans-serif;
+  font-weight: 400;
+}

@@ -1,61 +1,89 @@
-
+<!-- it there is no user yet, show loading -->
 <div *ngIf="!user">
   <img class="loading" src="/assets/imgs/loading.gif" />
 </div>
 
+<!-- else -->
 <div class="card" *ngIf="user">
 
 <div class="profile-page">
-  <div class=" col-md-offset-1 col-md-3" id="profile-left">
-    <a [routerLink]="['/chat']">Back</a>
-    <img src="/assets/imgs/default.png" class="img-thumbnail profile-pic" alt="Cinque Terre">
-    <hr>
+  <a [routerLink]="['/chat']">Back</a>
+  <!-- FORM -->
+  <form (ngSubmit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
+    <!-- left side of profile page -->
+    <div class=" col-md-offset-1 col-md-3" id="profile-left">
 
-    <form (ngSubmit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
-      <!-- city of residence -->
-      <h4 class="text-center section-name"> City of Residence </h4>
-      <input type="text" class="form-control text-center value" id="edit-city" name="city" [(ngModel)]="cityOfResidence" #cityOfResidenceField="ngModel"
-        required [disabled]="processing" placeholder="{{user.cityOfResidence}}"></form>
+      <img src="/assets/imgs/default.png" class="img-thumbnail profile-pic" alt="Cinque Terre">
       <hr>
-       
-      <h4 class="text-center section-name"> Work </h4>
-      <p class="text-center"> {{user.work}}</p>
-      <hr>
-      <h4 class="text-center section-name"> Skills </h4>
-      <p class="alert alert-success skill"> JavaScript</p>
-      <p class="alert alert-success skill"> Angular </p>
-      <p class="alert alert-success skill"> HTML </p>
-      <p class="alert alert-success skill"> CSS</p>
-  </div>
 
+        <!-- city of residence -->
+        <h4 class="text-center section-name"> City of Residence </h4>
+        <input type="text" class="form-control text-center value" id="edit-city" name="city" [(ngModel)]="cityOfResidence" #cityOfResidenceField="ngModel"
+          required [disabled]="processing" placeholder="{{user.cityOfResidence}}">
+        <hr>
+        <!-- work -->
+        <h4 class="text-center section-name"> Work </h4>
+        <input type="text" class="form-control text-center value" id="edit-work" name="work" [(ngModel)]="work" #workField="ngModel"
+          required [disabled]="processing" placeholder="{{user.work}}">
+        <hr>
+        <!-- skills -->
+        <h4 class="text-center section-name"> Skills </h4>
+        <p class="alert alert-success skill"> JavaScript</p>
+        <p class="alert alert-success skill"> Angular </p>
+        <p class="alert alert-success skill"> HTML </p>
+        <p class="alert alert-success skill"> CSS</p>
+    </div>
+
+    <!-- right side of profile page -->
     <div class="col-md-7" id="profile-right">
-      <a href="#">
-        <span class="glyphicon glyphicon-pencil edit" [routerLink]="['/profile', user._id, 'edit']"></span>
+      <!-- edit button -->
+      <a [routerLink]="['/profile', user._id, 'edit']">
+        <span class="glyphicon glyphicon-pencil edit" ></span>
       </a>
-  
 
       <div class="profile-head">
-        <h1> {{user.firstName}} {{user.lastName}}</h1>
-        <p> Ironhack {{user.cohort}}</p>
+        <!--first name-->
+        <div class="form-inline">
+          <div class="form-group">
+             <input type="text" class="form-control value-heading" id="edit-firstname" name="firstName" [(ngModel)]="firstName" #firstNameField="ngModel"
+            required [disabled]="processing" placeholder="{{user.firstName}}">
+          </div>
+          <!--last name-->
+          <div class="form-group">
+            <input type="text" class="form-control  value-heading" id="edit-lastname" name="lastName" [(ngModel)]="lastName" #lastNameField="ngModel"
+              required [disabled]="processing" placeholder="{{user.lastName}}">
+          </div>
+        </div>
+
+        <!-- cohort -->
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="cohort" class="label">Ironhack Campus:</label>
+            <input type="text" class="form-control" id="edit-cohort" name="cohort" [(ngModel)]="cohort" #cohortField="ngModel" required
+              [disabled]="processing" placeholder="{{user.cohort}}">
+          </div>
+        </div>
       </div>
-
-
+      
       <section class="text-center">
         <h4 class="text-center section-name"> About me </h4>
-        <p> {{user.about}} </p>
+        <input type="text" class="form-control text-center" id="edit-about" name="about" [(ngModel)]="about" #aboutField="ngModel" required
+          [disabled]="processing" placeholder="{{user.about}}">
         <hr>
       </section>
 
-
       <section class="text-center">
         <h4 class="text-center section-name"> What I like </h4>
-        <p> {{user.likes}}</p>
+        <input type="text" class="form-control text-center" id="edit-likes" name="likes" [(ngModel)]="likes" #likesField="ngModel" required
+          [disabled]="processing" placeholder="{{user.likes}}">
         <hr>
       </section>
 
       <section class="text-center">
         <h4 class="section-name"> My Story </h4>
-        <p> {{user.myStory}}</p>
+        <input type="text" class="form-control text-center" id="edit-myStory" name="myStory" [(ngModel)]="myStory" #myStoryField="ngModel" required
+        [disabled]="processing" placeholder="{{user.myStory}}">
+        <hr>
         <hr>
       </section>
 
@@ -68,8 +96,9 @@
         <img src="/assets/imgs/marketa.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
       </section>
 
-    </div>
 
+      </div>
+</form>
     <div class="clearfloat"></div>
   </div>
 </div>
