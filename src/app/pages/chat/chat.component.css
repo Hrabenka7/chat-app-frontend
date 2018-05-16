@@ -1,0 +1,96 @@
+
+.navbar-default{
+  background-color: #46A8AA;
+  border: none!important;
+  height: 10vh;
+  border-radius: 0%;
+}
+
+.navbar-brand {
+  line-height: 50px;
+  color: white;
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.chat-input input {
+  width: 60%;
+  border: none;
+  border-bottom: 2px solid  #46A8AA;
+  margin-bottom: 50px;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.fa-comments {
+  font-size: 30px;
+  color: grey;
+  padding-right: 10px;
+}
+
+.btn-danger{
+  margin-left: 20px;
+}
+
+/* /* Chat containers */
+.container-message {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 20px;
+}
+
+/* Darker chat container */
+.darker {
+    background-color: #E6F1DE;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 20px;
+}
+
+.img-rounded {
+    height: 50px;
+    width: 50px;
+}
+/* Clear floats */
+
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Style images */
+.container img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+/* Style the right image */
+.container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+}
+
+/* Style time text */
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+    float: left;
+    color: #999;
+}
+
+.smiley {
+    width: 30px;
+    height: 30px;
+}

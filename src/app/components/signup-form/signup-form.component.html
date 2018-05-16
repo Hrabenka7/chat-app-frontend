@@ -1,0 +1,87 @@
+<form (ngSubmit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
+
+  <!-- FISRT NAME -->
+  <div class="form-group" [ngClass]="{'has-error': feedbackEnabled && firstNameField.errors}">
+    <input type="text" class="form-control" id="sg-firstname" name="firstname" placeholder="First Name" [(ngModel)]="firstName"
+      #firstNameField="ngModel" required [disabled]="processing">
+    <!-- Error message -->
+    <div *ngIf="feedbackEnabled && firstNameField.errors">
+      <p *ngIf="firstNameField.errors.required" class="validation"> First Name is required</p>
+    </div>
+  </div>
+
+  <!--  LAST NAME -->
+  <div class="form-group" [ngClass]="{'has-error': feedbackEnabled && lastNameField.errors}">
+    <input type="text" class="form-control" id="sg-lastname" name="lastname" placeholder="Last Name" [(ngModel)]="lastName" #lastNameField="ngModel"
+      required [disabled]="processing">
+    <!-- Error message -->
+    <div *ngIf="feedbackEnabled && lastNameField.errors">
+      <p *ngIf="lastNameField.errors.required" class="validation"> Last Name is required</p>
+    </div>
+  </div>
+
+  <!-- COHORT -->
+  <div class="form-group">
+    <select name="cohort" [(ngModel)]="cohort" class="form-control" id="select-campus" placeholder="Campus city">
+      <option value="" selected disabled>Please select your Campus city</option>
+      <option value="Amsterdam">Amsterdam</option>
+      <option value="Barcelona">Barcelona</option>
+      <option value="Berlin">Berlin</option>
+      <option value="Madrid">Madrid</option>
+      <option value = "Mexico City">Mexico City</option>
+      <option value="Miami">Miami</option>
+      <option value="Paris">Paris</option>
+      <option value="São Paulo">São Paulo</option>
+    </select>
+  </div>
+
+  <!-- <div class="form-group">
+      <select class="form-control" name="campus-city" id="select-campus" [(ngModel)]= "cohort" placeholder="Campus city">
+        <option class = "default-value" value="" selected disabled>Please select your Campus city</option>
+        <option *ngFor="let one of cohort" [value]="one">{{one}}</option>
+      </select>
+    </div> -->
+
+  <!--  EMAIL -->
+  <div class="form-group" [ngClass]="{'has-error': feedbackEnabled && emailField.errors}">
+    <input type="text" class="form-control" id="sg-email" name="email" placeholder="Email" [(ngModel)]="email" #emailField="ngModel"
+      required [disabled]="processing">
+    <!-- Error message -->
+    <div *ngIf="feedbackEnabled && emailField.errors">
+      <p *ngIf="emailField.errors.required" class="validation"> Email is required</p>
+    </div>
+  </div>
+
+
+  <!--  PASSWORD -->
+  <div class="form-group" [ngClass]="{'has-error': feedbackEnabled && passwordField.errors}">
+    <input type="password" class="form-control" id="sg-password" name="password" placeholder="Password" [(ngModel)]="password"
+      #passwordField="ngModel" required minlength="6" [disabled]="processing">
+    <!-- Error message -->
+    <div *ngIf="feedbackEnabled && passwordField.errors">
+      <p *ngIf="passwordField.errors.required" class="validation"> Password is required</p>
+      <p *ngIf="passwordField.errors.minlength" class="validation"> Password is too short</p>
+    </div>
+  </div>
+
+  <!-- CHECKBOX -->
+  <div class="checkbox" [ngClass]="{'has-error': feedbackEnabled && checkboxField.errors}">
+    <label>
+      <input type="checkbox" name="checkbox" required [disabled]="processing" [(ngModel)]="checkbox" #checkboxField="ngModel"> I have read and accept the
+      <a href="/">Terms and Conditions</a>
+    </label>
+
+    <div *ngIf="feedbackEnabled && checkboxField.errors">
+      <p *ngIf="checkboxField.errors.required" class="validation"> You have to agree with the Terms and Conditions </p>
+    </div>
+  </div>
+
+  <!-- SUBMIT BUTTON -->
+  <button type="submit" [disabled]="processing" class="btn btn-default btn-signup">Sign up</button>
+  <a class="btn btn-social btn-facebook">
+    <i class="fa fa-facebook" aria-hidden="true"></i> Sign in with Facebook
+  </a>
+  <div *ngIf="feedbackEnabled && form.invalid">
+    <p class="validation">There are errors in the form. Please review it, and submit again.</p>
+  </div>
+</form>

@@ -1,0 +1,81 @@
+
+<div *ngIf="!user">
+  <img class="loading" src="/assets/imgs/loading.gif" />
+</div>
+
+<div class="card" *ngIf="user">
+
+<div class="profile-page">
+  <div class=" col-md-offset-1 col-md-3" id="profile-left">
+    <a [routerLink]="['/chat']">Back</a>
+    <img src="/assets/imgs/default.png" class="img-thumbnail profile-pic" alt="Cinque Terre">
+    <hr>
+
+    <form (ngSubmit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
+      <!-- city of residence -->
+      <h4 class="text-center section-name"> City of Residence </h4>
+      <input type="text" class="form-control text-center value" id="edit-city" name="city" [(ngModel)]="cityOfResidence" #cityOfResidenceField="ngModel"
+        required [disabled]="processing" placeholder="{{user.cityOfResidence}}"></form>
+      <hr>
+       
+      <h4 class="text-center section-name"> Work </h4>
+      <p class="text-center"> {{user.work}}</p>
+      <hr>
+      <h4 class="text-center section-name"> Skills </h4>
+      <p class="alert alert-success skill"> JavaScript</p>
+      <p class="alert alert-success skill"> Angular </p>
+      <p class="alert alert-success skill"> HTML </p>
+      <p class="alert alert-success skill"> CSS</p>
+  </div>
+
+    <div class="col-md-7" id="profile-right">
+      <a href="#">
+        <span class="glyphicon glyphicon-pencil edit" [routerLink]="['/profile', user._id, 'edit']"></span>
+      </a>
+  
+
+      <div class="profile-head">
+        <h1> {{user.firstName}} {{user.lastName}}</h1>
+        <p> Ironhack {{user.cohort}}</p>
+      </div>
+
+
+      <section class="text-center">
+        <h4 class="text-center section-name"> About me </h4>
+        <p> {{user.about}} </p>
+        <hr>
+      </section>
+
+
+      <section class="text-center">
+        <h4 class="text-center section-name"> What I like </h4>
+        <p> {{user.likes}}</p>
+        <hr>
+      </section>
+
+      <section class="text-center">
+        <h4 class="section-name"> My Story </h4>
+        <p> {{user.myStory}}</p>
+        <hr>
+      </section>
+
+      <section>
+        <h4 class="section-name"> Default Friends: </h4>
+        <img src="/assets/imgs/ioana.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
+        <img src="/assets/imgs/lennie.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
+        <img src="/assets/imgs/samantha.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
+        <img src="/assets/imgs/miriam.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
+        <img src="/assets/imgs/marketa.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
+      </section>
+
+    </div>
+
+    <div class="clearfloat"></div>
+  </div>
+</div>
+
+
+
+
+
+

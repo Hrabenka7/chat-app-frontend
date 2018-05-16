@@ -1,0 +1,24 @@
+<!--  Left side column -->
+<div class="col-md-6" id="left-side"></div>
+
+<!--  Right side column -->
+<div class="col-md-6" id="right-side">
+
+  <!-- Log in form -->
+
+  <app-login-form></app-login-form>
+
+  <!-- Sign up form -->
+  <div class="main-text">
+    <h1>Connect with friends and the world around you on Hackbook.</h1>
+    <p> It’s free and always will be. </p>
+  </div>
+
+  <!-- FORM PRINCIPLES -->
+  <!-- event ngSubmit is binded with a method submitForm(arg) written inside this.component.ts -->
+  <!--  exporting ngForm value to a public #form variable -->
+  <!-- novalidate specifies that the form-data (input) should not be validated when submitted. -->
+  <!-- creates new class is-processing and sets value to processing -->
+  <app-signup-form></app-signup-form>
+
+</div>

@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates|Karma|Roboto');
+
+body {
+  font-size: 17px;
+  font-family: 'Karma', serif;
+  background-color:black;
+   /* #46A8AA; */
+}
+
+/* Profile page section */
+
+.profile-page{
+  background-color: #fcf9f9;
+  padding: 50px;
+}
+
+.section-name {
+  font-family: 'Montserrat Alternates', sans-serif;
+  padding-bottom: 20px;
+}
+
+.loading {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+/* profile page section LEFT */
+
+#profile-left{
+  padding-top: 50px;
+}
+
+.profile-pic {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+.work-position{
+  font-size: 17px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.company-name {
+  text-transform: uppercase;
+}
+
+/* profile page section RIGHT */
+
+#profile-right{
+  padding-top: 50px;
+  padding-left: 50px;
+}
+
+.profile-head{
+  padding-bottom: 40px;
+}
+.edit {
+  text-align: right;
+  float: right;
+}
+
+.glyphicon-pencil {
+  font-size: 20px;
+}
+
+section{
+  padding-bottom: 20px;
+}
+
+.friend-pic {
+  height: 100px;
+  width: 100px;
+}
+
+
+
+/* CLEAR FLOAT*/
+
+.clearfloat {
+  clear: both;
+}
+
+.footer{
+  background-color: #fcf9f9;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.footer p {
+  margin: 0;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #363642;
+    font-size: 17px;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #363642;
+    font-size: 17px;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #363642;
+    font-size: 17px;
+}
+
+input {
+  background-color: #FCF9F9;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}

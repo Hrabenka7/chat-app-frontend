@@ -1,0 +1,26 @@
+
+.form-inline  {
+   margin-top: 20px;
+   text-align: right;
+   margin-left: 20px;
+}
+
+#right-side input {
+  padding: 20px;
+  margin-right: 10px;
+}
+
+.btn-login {
+ border-radius: 40%;
+ padding: 15px;
+ margin-left: 10px;
+ margin-right: 10px;
+ color: #46A8AA;
+ font-weight: 700;
+ border: 1px solid #46A8AA;
+}
+
+.btn-login:hover{
+  background-color: #E6F1DE;
+   color: #46A8AA;
+}

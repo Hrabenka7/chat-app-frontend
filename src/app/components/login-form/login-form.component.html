@@ -1,0 +1,33 @@
+<form class="form-inline" (ngSubmit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
+
+  <!--  EMAIL -->
+  <div class="form-group" [ngClass]="{'has-error': feedbackEnabled && emailField.errors}">
+    <input type="email" class="form-control" id="lg-email" name="email" placeholder="Email" [(ngModel)]="email" #emailField="ngModel"
+      required [disabled]="processing">
+    <!-- Error message -->
+    <div *ngIf="feedbackEnabled && emailField.errors">
+      <p *ngIf="emailField.errors.required" class="validation"></p>
+    </div>
+  </div>
+
+  <!--  PASSWORD -->
+  <div class="form-group" [ngClass]="{'has-error': feedbackEnabled && passwordField.errors}">
+    <input type="password" class="form-control" id="lg-password" name="password" placeholder="Password" [(ngModel)]="password"
+      #passwordField="ngModel" required [disabled]="processing">
+    <!-- Error message -->
+    <div *ngIf="feedbackEnabled && passwordField.errors">
+      <p *ngIf="passwordField.errors.required" class="validation"></p>
+    </div>
+  </div>
+
+  <!-- LOGIN BUTTON -->
+  <div class="form-group">
+    <button type="submit" [disabled]="processing" class="btn btn-default btn-login">Log in</button>
+    <label>
+      <a href="/"> Forgot Password?</a>
+    </label>
+    <div *ngIf="feedbackEnabled && form.invalid">
+      <p class="validation"></p>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,52 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Ironhack Chat</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a [routerLink] = "['/profile', user._id]"><img [src] = "user.picture" class="img-rounded"></a>
+        </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid container-message">
+  <b>Marketa</b>
+  <p>Hi Jenny. Do you want to eat some pulpo a la gallega with me tonight?</p>
+  <span class="time-left">11:00</span>
+</div>
+
+<div class="container-fluid darker">
+  <b> Jenny </b>
+  <p>Marketaaaaaa?!!! I'm working on my project!!!!</p>
+  <span class="time-left">11:01</span>
+</div>
+
+<div class="container-fluid darker">
+  <p>And you should do it too ... </p>
+  <span class="time-left">11:02</span>
+</div>
+
+<div class="container-fluid darker">
+  <p>Look! You live chat is not even live!</p>
+  <span class="time-left">11:05</span>
+</div>
+
+<div class="container-fluid container-message">
+  <b>Marketa</b>
+  <p><img class="smiley"src="/assets/imgs/smiley.png"></p>
+  <span class="time-left">11:00</span>
+</div>
+
+
+<footer class="navbar navbar-fixed-bottom chat-input">
+  <form class="container-fluid">
+    <i class="fa fa-comments"></i>
+    <input type="text" maxlength="250" name="message" placeholder="Type your message here" #inputMessage [(ngModel)]="messageContent" 
+  (keyup.enter)="sendMessage(messageContent)">
+  <button> Send </button>
+
+  <button class="btn btn-danger navbar-btn align-right" (click)="logout()">Leave the conversation</button>
+  </form>
+</footer>

@@ -1,0 +1,24 @@
+
+#left-side {
+  background: url("../../../../images/left-side.png") center;
+  background-size: cover;
+  height: 100vh;
+}
+
+#right-side {
+  background-color: #fcf9f9;
+  height: 100vh;
+}
+
+
+.main-text{
+  padding: 100px;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+

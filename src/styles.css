@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Montserrat+Alternates|Karma|Roboto');
+
+body { 
+  padding: 0; 
+  margin: 0; 
+  font-size: 15px;
+}
+
+#right-side input {
+  padding: 20px;
+  margin-right: 10px;
+}
+
+.form-group a {
+  color: grey;
+}
+
+form {
+  padding: 10px;
+}
