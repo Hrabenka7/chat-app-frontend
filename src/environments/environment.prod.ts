@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://hackbook-app.herokuapp.com'
+  apiUrl: 'https://hack-book.herokuapp.com'
 };
