@@ -12,8 +12,8 @@ export class SignupFormComponent implements OnInit {
   feedbackEnabled = false;
   error = null;
   processing = false;
-  firstName: string;
-  lastName: string;
+  name: string;
+  cityOfResidence: string;
   cohort = '';
   email: string;
   password: string;
@@ -32,8 +32,8 @@ export class SignupFormComponent implements OnInit {
     if (form.valid) {
       this.processing = true;
       const user = {
-        firstName: this.firstName,
-        lastName: this.lastName,
+        name: this.name,
+        cityOfResidence: this.cityOfResidence,
         cohort: this.cohort,
         email: this.email,
         password: this.password,

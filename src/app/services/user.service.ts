@@ -24,7 +24,7 @@ export class UserService {
     const options = {
       withCredentials: true
     };
-    return this.httpClient.put(`${this.baseUrl}/${user._id}`, user, options)
+    return this.httpClient.put(`${this.baseUrl}/me`, user, options)
       .toPromise();
   }
 }

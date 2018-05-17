@@ -1,29 +1,29 @@
 <form (ngSubmit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
 
-  <!-- FISRT NAME -->
-  <div class="form-group" [ngClass]="{'has-error': feedbackEnabled && firstNameField.errors}">
-    <input type="text" class="form-control" id="sg-firstname" name="firstname" placeholder="First Name" [(ngModel)]="firstName"
-      #firstNameField="ngModel" required [disabled]="processing">
+  <!-- NAME -->
+  <div class="form-group" [ngClass]="{'has-error': feedbackEnabled && nameField.errors}">
+    <input type="text" class="form-control" id="sg-name" name="name" placeholder="First Name + Last Name" [(ngModel)]="name"
+      #nameField="ngModel" required [disabled]="processing">
     <!-- Error message -->
-    <div *ngIf="feedbackEnabled && firstNameField.errors">
-      <p *ngIf="firstNameField.errors.required" class="validation"> First Name is required</p>
+    <div *ngIf="feedbackEnabled && nameField.errors">
+      <p *ngIf="nameField.errors.required" class="validation"> Name is required</p>
     </div>
   </div>
 
-  <!--  LAST NAME -->
-  <div class="form-group" [ngClass]="{'has-error': feedbackEnabled && lastNameField.errors}">
-    <input type="text" class="form-control" id="sg-lastname" name="lastname" placeholder="Last Name" [(ngModel)]="lastName" #lastNameField="ngModel"
+  <!--  CITY OF RESIDENCE -->
+  <div class="form-group" [ngClass]="{'has-error': feedbackEnabled && cityOfResidence.errors}">
+    <input type="text" class="form-control" id="sg-cityOfResidence" name="cityOfResidence" placeholder="City of residence" [(ngModel)]="cityOfResidence" #cityOfResidenceField="ngModel"
       required [disabled]="processing">
     <!-- Error message -->
-    <div *ngIf="feedbackEnabled && lastNameField.errors">
-      <p *ngIf="lastNameField.errors.required" class="validation"> Last Name is required</p>
+    <div *ngIf="feedbackEnabled && cityOfResidence.errors">
+      <p *ngIf="cityOfResidence.errors.required" class="validation"> City of residence is required</p>
     </div>
   </div>
 
   <!-- COHORT -->
   <div class="form-group">
     <select name="cohort" [(ngModel)]="cohort" class="form-control" id="select-campus" placeholder="Campus city">
-      <option value="" selected disabled>Please select your Campus city</option>
+      <option value="" selected disabled>Select your Campus</option>
       <option value="Amsterdam">Amsterdam</option>
       <option value="Barcelona">Barcelona</option>
       <option value="Berlin">Berlin</option>
@@ -34,13 +34,6 @@
       <option value="São Paulo">São Paulo</option>
     </select>
   </div>
-
-  <!-- <div class="form-group">
-      <select class="form-control" name="campus-city" id="select-campus" [(ngModel)]= "cohort" placeholder="Campus city">
-        <option class = "default-value" value="" selected disabled>Please select your Campus city</option>
-        <option *ngFor="let one of cohort" [value]="one">{{one}}</option>
-      </select>
-    </div> -->
 
   <!--  EMAIL -->
   <div class="form-group" [ngClass]="{'has-error': feedbackEnabled && emailField.errors}">

@@ -10,7 +10,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" a [routerLink]="['/chat']">Back to the Chat</a>
+      <a class="navbar-brand" a [routerLink]="['/chat']"> <span class="glyphicon glyphicon-arrow-left"></span>Back to the Chat</a>
     </div>
   </div>
 </nav>
@@ -27,13 +27,13 @@
 
         <!-- city of residence -->
         <h4 class="text-center section-name"> City of Residence </h4>
-        <input type="text" class="form-control text-center value" id="edit-city" name="city" [(ngModel)]="cityOfResidence" #cityOfResidenceField="ngModel"
-          required [disabled]="processing" placeholder="{{user.cityOfResidence}}">
+        <input type="text" class="form-control text-center value" id="edit-city" name="cityOfResidence" [(ngModel)]="user.cityOfResidence" #cityOfResidenceField="ngModel"
+          required [disabled]="canEdit" placeholder="{{user.cityOfResidence}}">
         <hr>
         <!-- work -->
         <h4 class="text-center section-name"> Work </h4>
-        <input type="text" class="form-control text-center value" id="edit-work" name="work" [(ngModel)]="work" #workField="ngModel"
-          required [disabled]="processing" placeholder="{{user.work}}">
+        <input type="text" class="form-control text-center value" id="edit-work" name="work" [(ngModel)]="user.work" #workField="ngModel"
+          required [disabled]="canEdit" placeholder="{{user.work}}">
         <hr>
         <!-- skills -->
         <h4 class="text-center section-name"> Skills </h4>
@@ -46,52 +46,50 @@
     <!-- right side of profile page -->
     <div class="col-md-7" id="profile-right">
       <!-- edit button -->
-      <a [routerLink]="['/profile', user._id, 'edit']">
-        <span class="glyphicon glyphicon-pencil edit" ></span>
-      </a>
+      <div class="text-right">
+            <span (click)="handleEditClick()" class="glyphicon glyphicon-pencil edit" ></span>
+            <div *ngIf="!canEdit">
+              <button class="btn btn-warning btn-submit" type="submit" [disabled]="processing">Save</button>
+            </div>
+      </div>
 
       <div class="profile-head">
         <!--first name-->
         <div class="form-inline">
           <div class="form-group">
-             <input type="text" class="form-control value-heading" id="edit-firstname" name="firstName" [(ngModel)]="firstName" #firstNameField="ngModel"
-            required [disabled]="processing" placeholder="{{user.firstName}}">
-          </div>
-          <!--last name-->
-          <div class="form-group">
-            <input type="text" class="form-control  value-heading" id="edit-lastname" name="lastName" [(ngModel)]="lastName" #lastNameField="ngModel"
-              required [disabled]="processing" placeholder="{{user.lastName}}">
+             <input type="text" class="form-control value-heading" id="edit-name" name="name" [(ngModel)]="user.name" #nameField="ngModel"
+            required [disabled]="canEdit" placeholder="{{user.name}}">
           </div>
         </div>
 
         <!-- cohort -->
         <div class="form-inline">
           <div class="form-group">
-            <label for="cohort" class="label">Ironhack Campus:</label>
-            <input type="text" class="form-control" id="edit-cohort" name="cohort" [(ngModel)]="cohort" #cohortField="ngModel" required
-              [disabled]="processing" placeholder="{{user.cohort}}">
+            <label for="cohort" class="label">Campus:</label>
+            <input type="text" class="form-control" id="edit-cohort" name="cohort" [(ngModel)]="user.cohort" #cohortField="ngModel" required
+              [disabled]="canEdit">
           </div>
         </div>
       </div>
       
       <section class="text-center">
         <h4 class="text-center section-name"> About me </h4>
-        <input type="text" class="form-control text-center" id="edit-about" name="about" [(ngModel)]="about" #aboutField="ngModel" required
-          [disabled]="processing" placeholder="{{user.about}}">
+        <input type="text" class="form-control text-center" id="edit-about" name="about" [(ngModel)]="user.about" #aboutField="ngModel" required
+          [disabled]="canEdit" placeholder="{{user.about}}">
         <hr>
       </section>
 
       <section class="text-center">
         <h4 class="text-center section-name"> What I like </h4>
-        <input type="text" class="form-control text-center" id="edit-likes" name="likes" [(ngModel)]="likes" #likesField="ngModel" required
-          [disabled]="processing" placeholder="{{user.likes}}">
+        <input type="text" class="form-control text-center" id="edit-likes" name="likes" [(ngModel)]="user.likes" #likesField="ngModel" required
+          [disabled]="canEdit" placeholder="{{user.likes}}">
         <hr>
       </section>
 
       <section class="text-center">
         <h4 class="section-name"> My Story </h4>
-        <input type="text" class="form-control text-center" id="edit-myStory" name="myStory" [(ngModel)]="myStory" #myStoryField="ngModel" required
-        [disabled]="processing" placeholder="{{user.myStory}}">
+        <input type="text" class="form-control text-center" id="edit-myStory" name="myStory" [(ngModel)]="user.myStory" #myStoryField="ngModel" required
+        [disabled]="canEdit" placeholder="{{user.myStory}}">
         <hr>
         <hr>
       </section>

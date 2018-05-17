@@ -11,12 +11,11 @@ export class ProfileComponent implements OnInit {
 
   user: Object;
   idUser: string;
-  disabledForm: boolean;
+  canEdit = true;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    // this.disabledForm = true;
     this.activatedRoute.params.subscribe((params) => {
       this.idUser = params.id;
       this.userService.getOne(this.idUser)
@@ -28,15 +27,20 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  submitForm(user) {
-    this.userService.update(user)
+  submitForm(form) {
+    this.userService.update(this.user)
     .then((data) => {
+      this.user = data;
+      this.canEdit = !this.canEdit;
       this.router.navigate(['/profile', this.idUser]);
-      this.disabledForm = false;
     })
     .catch((err) => {
       console.log(err);
     });
+  }
+
+  handleEditClick() {
+    this.canEdit = !this.canEdit;
   }
 
 }

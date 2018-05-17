@@ -20,10 +20,10 @@ body {
 }
 
 .loading {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 /* profile page section LEFT */
@@ -38,15 +38,6 @@ body {
   height: auto;
 }
 
-.work-position{
-  font-size: 17px;
-  font-family: 'Roboto', sans-serif;
-}
-
-.company-name {
-  text-transform: uppercase;
-}
-
 /* profile page section RIGHT */
 
 #profile-right{
@@ -56,14 +47,6 @@ body {
 
 .profile-head{
   padding-bottom: 40px;
-}
-.edit {
-  text-align: right;
-  float: right;
-}
-
-.glyphicon-pencil {
-  font-size: 20px;
 }
 
 section{
@@ -75,6 +58,17 @@ section{
   width: 100px;
 }
 
+.edit {
+  color: #0075AD;
+  font-size: 25px;
+  cursor: pointer;
+  float: right;
+  padding-left: 20px;
+}
+
+.btn-submit{
+float: right;
+}
 
 
 /* CLEAR FLOAT*/
@@ -83,57 +77,29 @@ section{
   clear: both;
 }
 
-.footer{
-  background-color: #fcf9f9;
-  padding: 20px;
-  font-size: 20px;
+.form-control {
+  font-size: 17px;
 }
 
-.footer p {
-  margin: 0;
-}
-
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #363642;
-    font-size: 17px;
-    opacity: 1; /* Firefox */
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #363642;
-    font-size: 17px;
-}
-
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: #363642;
-    font-size: 17px;
+.value-heading{
+  font-size: 25px;
 }
 
 input {
   background-color: #FCF9F9;
-  border: none;
-  box-shadow: none;
   outline: none;
-}
-
-
-.value-heading::placeholder{
-  font-size: 25px;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;;
   
 }
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    font-size: 25px;
-}
 
-::-ms-input-placeholder { /* Microsoft Edge */
-    font-size: 25px;
-}
 
 .label{
   font-size: 17px;
   color: black;
   font-family:'Montserrat Alternates', sans-serif;
   font-weight: 400;
+  padding-left: 15px;
 }
 
 .navbar-default{
@@ -142,3 +108,20 @@ input {
   height: 5vh;
   border-radius: 0%;
 }
+
+.glyphicon-arrow-left{
+  padding-right: 10px;
+}
+
+.navbar-brand{
+  color: white;
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  background-color: #FCF9F9;
+  border: none;
+  outline: none;
+  border-color: none;
+  box-shadow: none;
+}
+
