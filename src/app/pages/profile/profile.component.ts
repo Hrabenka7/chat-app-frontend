@@ -9,9 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  user: Object;
+  user: any;
   idUser: string;
   canEdit = true;
+  newSkill: string;
+
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -25,6 +27,11 @@ export class ProfileComponent implements OnInit {
           }, 1000);
         });
     });
+  }
+
+  addSkill() {
+    this.user.skills.push(this.newSkill);
+    this.newSkill = '';
   }
 
   submitForm(form) {

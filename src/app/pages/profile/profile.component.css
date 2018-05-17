@@ -77,6 +77,9 @@ float: right;
   clear: both;
 }
 
+
+/* GENERAL STYLES */
+
 .form-control {
   font-size: 17px;
 }
@@ -89,10 +92,15 @@ input {
   background-color: #FCF9F9;
   outline: none;
   border-color: #9ecaed;
-  box-shadow: 0 0 10px #9ecaed;;
-  
+  box-shadow: 0 0 10px #9ecaed;; 
 }
 
+select {
+  background-color: #FCF9F9;
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;; 
+}
 
 .label{
   font-size: 17px;
@@ -123,5 +131,14 @@ input {
   outline: none;
   border-color: none;
   box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
+.add-skill-section{
+  padding-bottom: 20px;
+}
+
+.skills-alert{
+  padding-top: 10px;
+}

@@ -27,4 +27,18 @@ export class UserService {
     return this.httpClient.put(`${this.baseUrl}/me`, user, options)
       .toPromise();
   }
+
+  addSkill(newSkill): Promise<any> {
+    const options = {
+      withCredentials: true
+    };
+
+    const data = {
+      newSkill
+    };
+
+    return this.httpClient.put(`${this.baseUrl}/edit-my-skills`, data, options)
+      .toPromise();
+  }
+
 }
