@@ -11,12 +11,12 @@
   </div>
 
   <!--  CITY OF RESIDENCE -->
-  <div class="form-group" [ngClass]="{'has-error': feedbackEnabled && cityOfResidence.errors}">
+  <div class="form-group" [ngClass]="{'has-error': feedbackEnabled && cityOfResidenceField.errors}">
     <input type="text" class="form-control" id="sg-cityOfResidence" name="cityOfResidence" placeholder="City of residence" [(ngModel)]="cityOfResidence" #cityOfResidenceField="ngModel"
       required [disabled]="processing">
     <!-- Error message -->
-    <div *ngIf="feedbackEnabled && cityOfResidence.errors">
-      <p *ngIf="cityOfResidence.errors.required" class="validation"> City of residence is required</p>
+    <div *ngIf="feedbackEnabled && cityOfResidenceField.errors">
+      <p *ngIf="cityOfResidenceField.errors.required" class="validation"> City of residence is required</p>
     </div>
   </div>
 
