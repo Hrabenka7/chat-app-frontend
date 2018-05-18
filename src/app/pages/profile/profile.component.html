@@ -55,9 +55,13 @@
           </div>
 
         
-        <ul *ngFor = "let skill of user.skills">
-          <p class="alert alert-success skill">{{skill}}</p>
-        </ul>
+      <ul *ngFor="let skill of user.skills">
+        <li class="alert alert-success skill">{{skill}}
+          <span *ngIf="!canEdit">
+            <span class="glyphicon glyphicon-remove span" (click)="deleteSkill(skill)"></span>
+          </span>
+        </li>
+      </ul>
 
       
     </div>

@@ -11,6 +11,7 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
+// ####################################### GET ONE ######################## //
 
   getOne(id: string): Promise<any> {
     const options = {
@@ -20,6 +21,8 @@ export class UserService {
       .toPromise();
   }
 
+// ####################################### UPDATE USER ######################## //
+
   update(user): Promise<any> {
     const options = {
       withCredentials: true
@@ -27,6 +30,8 @@ export class UserService {
     return this.httpClient.put(`${this.baseUrl}/me`, user, options)
       .toPromise();
   }
+ 
+// ####################################### ADD NEW SKILL ######################## //
 
   addSkill(newSkill): Promise<any> {
     const options = {

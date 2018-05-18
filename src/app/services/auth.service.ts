@@ -8,24 +8,25 @@ import 'rxjs/add/operator/toPromise'; // adds toPromise property to Observable t
 import { environment } from '../../environments/environment';
 
 @Injectable()
+// @todo Subject vs Observable?
 export class AuthService {
 
   private user: any;
   private userChange: Subject<any> = new Subject();
-
   private baseUrl = environment.apiUrl + '/auth';   // path of backend
 
   userChange$: Observable<any> = this.userChange.asObservable();  // userChange of type Subject will act like Observable now
 
   constructor(private httpClient: HttpClient) { }
 
-  private setUser(user?: any) {  // user?: ??????
+  private setUser(user?: any) {
     this.user = user;
     this.userChange.next(user);  // .next() => all subscribers will listen to this event
     return user;
   }
 
   // #################### SIGN UP FUNCTION #################################### //
+
   signup(user: any): Promise<any> {
     const options = {
       withCredentials: true
@@ -37,6 +38,7 @@ export class AuthService {
   }
 
   // ##################### LOGIN FUNCTION ##################################### //
+
   login(user: any): Promise<any> {
     const options = {
       withCredentials: true
@@ -48,6 +50,7 @@ export class AuthService {
   }
 
   // ################################ LOGOUT FUNCTION ##########################//
+
    logout(): Promise<any> {
      const options = {
        withCredentials: true
@@ -58,11 +61,13 @@ export class AuthService {
    }
 
    // ################################ GET-USER FUNCTION ##########################//
+
    getUser(): any {
      return this.user;
    }
 
   // ################################ ME FUNCTION ##########################//
+
   me(): Promise<any> {
     const options = {
       withCredentials: true

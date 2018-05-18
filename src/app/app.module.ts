@@ -20,11 +20,14 @@ import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 
 // GUARDS (providers)
-import { InitAuthGuardService } from './guards/init-auth-guard.service';
-/* import { RequireAnonGuardService } from './guards/require-anon-guard.service'; */
+
+// @todo SOLVE "guard is not a function" error in console
+/* import { InitAuthGuardService } from './guards/init-auth-guard.service';
+ import { RequireAnonGuardService } from './guards/require-anon-guard.service'; */
 import { RequireUserGuardService } from './guards/require-user-guard.service';
 
-// Routes
+// Routes for <router-outlet>
+// The canActivate method returns a boolean indicating whether or not navigation to a route should be allowed.
 const routes:  Routes = [
   { path: '', component: HomepageComponent, /*  canActivate: [RequireAnonGuardService] */},
   { path: 'chat', component: ChatComponent, canActivate: [RequireUserGuardService] },
@@ -49,7 +52,7 @@ const routes:  Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService, InitAuthGuardService, RequireUserGuardService, UserService /* RequireAnonGuardService */],
+  providers: [AuthService, RequireUserGuardService, UserService /* RequireAnonGuardService, InitAuthGuardService */],
   bootstrap: [AppComponent]
 })
 

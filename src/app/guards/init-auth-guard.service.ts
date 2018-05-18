@@ -1,3 +1,5 @@
+// THIS GUARD IS NOT USED YET
+
 import { Injectable } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 

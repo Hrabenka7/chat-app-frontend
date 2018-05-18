@@ -142,3 +142,13 @@ select {
 .skills-alert{
   padding-top: 10px;
 }
+
+.span {
+  float: right;
+  cursor: pointer;
+}
+
+ul{
+  list-style: none;
+
+}

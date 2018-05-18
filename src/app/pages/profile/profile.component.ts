@@ -34,6 +34,11 @@ export class ProfileComponent implements OnInit {
     this.newSkill = '';
   }
 
+  deleteSkill(skill) {
+    const index = this.user.skills.indexOf(skill);
+    this.user.skills.splice(index, 1);
+  }
+
   submitForm(form) {
     this.userService.update(this.user)
     .then((data) => {
