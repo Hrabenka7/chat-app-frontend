@@ -88,7 +88,7 @@ float: right;
   font-size: 25px;
 }
 
-input {
+input, textarea {
   background-color: #FCF9F9;
   outline: none;
   border-color: #9ecaed;

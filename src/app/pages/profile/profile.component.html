@@ -6,29 +6,30 @@
 <!-- else -->
 <div class="card" *ngIf="user">
 
-<!--   NAV BAR -->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" a [routerLink]="['/chat']"> <span class="glyphicon glyphicon-arrow-left"></span>Back to the Chat</a>
+  <!--   NAV BAR -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" a [routerLink]="['/chat']">
+          <span class="glyphicon glyphicon-arrow-left"></span>Back to the Chat</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- BODY -->
-<div class="profile-page">
-  <!-- FORM -->
-  <form (ngSubmit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
-    <!-- left side of profile page -->
-    <div class=" col-md-offset-1 col-md-3" id="profile-left">
+  <!-- BODY -->
+  <div class="profile-page">
+    <!-- FORM -->
+    <form (ngSubmit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
+      <!-- left side of profile page -->
+      <div class=" col-md-offset-1 col-md-3" id="profile-left">
 
-      <img src="/assets/imgs/default.png" class="img-thumbnail profile-pic" alt="Cinque Terre">
-      <hr>
+        <img src="/assets/imgs/default.png" class="img-thumbnail profile-pic" alt="Cinque Terre">
+        <hr>
 
         <!-- city of residence -->
         <h4 class="text-center section-name"> City of Residence </h4>
-        <input type="text" class="form-control text-center value" id="edit-city" name="cityOfResidence" [(ngModel)]="user.cityOfResidence" #cityOfResidenceField="ngModel"
-          required [disabled]="canEdit" placeholder="{{user.cityOfResidence}}">
+        <input type="text" class="form-control text-center value" id="edit-city" name="cityOfResidence" [(ngModel)]="user.cityOfResidence"
+          #cityOfResidenceField="ngModel" required [disabled]="canEdit" placeholder="{{user.cityOfResidence}}">
         <hr>
         <!-- work -->
         <h4 class="text-center section-name"> Work </h4>
@@ -41,55 +42,56 @@
 
         <div *ngIf="!canEdit">
           <div class="text-center add-skill-section">
-          <div class="form-inline">
-            <div class="form-group">
-              <input type="text" class="form-control value" id="add-skills" name="skills" [(ngModel)]="newSkill" #skillsField="ngModel" required
-                [disabled]="canEdit" placeholder="Add a new skill">
+            <div class="form-inline">
+              <div class="form-group">
+                <input type="text" class="form-control value" id="add-skills" name="skills" [(ngModel)]="newSkill" #skillsField="ngModel"
+                  required [disabled]="canEdit" placeholder="Add a new skill">
               </div>
-                <div class="form-group">
+              <div class="form-group">
                 <div class="btn btn-warning btn-addSkills" (click)="addSkill()"> Add </div>
               </div>
-          </div>
-          <p class ="skills-alert" ><span class="glyphicon glyphicon-alert"></span> Don't forget to save your changes! </p>
-          </div>
-          </div>
-
-        
-      <ul *ngFor="let skill of user.skills">
-        <li class="alert alert-success skill">{{skill}}
-          <span *ngIf="!canEdit">
-            <span class="glyphicon glyphicon-remove span" (click)="deleteSkill(skill)"></span>
-          </span>
-        </li>
-      </ul>
-
-      
-    </div>
-
-    <!-- right side of profile page -->
-    <div class="col-md-7" id="profile-right">
-      <!-- edit button -->
-      <div class="text-right">
-            <span (click)="handleEditClick()" class="glyphicon glyphicon-pencil edit" ></span>
-            <div *ngIf="!canEdit">
-              <button class="btn btn-warning btn-submit" type="submit" [disabled]="processing">Save</button>
             </div>
-      </div>
-
-      <div class="profile-head">
-        <!--first name-->
-        <div class="form-inline">
-          <div class="form-group">
-             <input type="text" class="form-control value-heading" id="edit-name" name="name" [(ngModel)]="user.name" #nameField="ngModel"
-            required [disabled]="canEdit" placeholder="{{user.name}}">
+            <p class="skills-alert">
+              <span class="glyphicon glyphicon-alert"></span> Don't forget to save your changes! </p>
           </div>
         </div>
 
-        <!-- cohort -->
-        <div class="form-inline">
-          <div class="form-group">
-            <label for="cohort" class="label">Campus:</label>
-            <!-- <input type="text" class="form-control" id="edit-cohort" name="cohort" [(ngModel)]="user.cohort" #cohortField="ngModel" required
+
+        <ul *ngFor="let skill of user.skills">
+          <li class="alert alert-success skill">{{skill}}
+            <span *ngIf="!canEdit">
+              <span class="glyphicon glyphicon-remove span" (click)="deleteSkill(skill)"></span>
+            </span>
+          </li>
+        </ul>
+
+
+      </div>
+
+      <!-- right side of profile page -->
+      <div class="col-md-7" id="profile-right">
+        <!-- edit button -->
+        <div class="text-right">
+          <span (click)="handleEditClick()" class="glyphicon glyphicon-pencil edit"></span>
+          <div *ngIf="!canEdit">
+            <button class="btn btn-warning btn-submit" type="submit" [disabled]="processing">Save</button>
+          </div>
+        </div>
+
+        <div class="profile-head">
+          <!--first name-->
+          <div class="form-inline">
+            <div class="form-group">
+              <input type="text" class="form-control value-heading" id="edit-name" name="name" [(ngModel)]="user.name" #nameField="ngModel"
+                required [disabled]="canEdit" placeholder="{{user.name}}">
+            </div>
+          </div>
+
+          <!-- cohort -->
+          <div class="form-inline">
+            <div class="form-group">
+              <label for="cohort" class="label">Campus:</label>
+              <!-- <input type="text" class="form-control" id="edit-cohort" name="cohort" [(ngModel)]="user.cohort" #cohortField="ngModel" required
               [disabled]="canEdit"> -->
               <select name="cohort" [(ngModel)]="user.cohort" class="form-control" id="edit-cohort" [disabled]="canEdit">
                 <option value="" selected disabled>{{user.cohort}}</option>
@@ -102,53 +104,46 @@
                 <option value="Paris">Paris</option>
                 <option value="São Paulo">São Paulo</option>
               </select>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <!-- SECTION ABOUT, LIKES, STORY  -->
-      <!-- @todo add TEXTAREA! instead of one-line input  -->
-      <section class="text-center">
-        <h4 class="text-center section-name"> About me </h4>
-        <input type="text" class="form-control text-center" id="edit-about" name="about" [(ngModel)]="user.about" #aboutField="ngModel" required
-          [disabled]="canEdit" placeholder="{{user.about}}">
-        <hr>
-      </section>
 
-      <section class="text-center">
-        <h4 class="text-center section-name"> What I like </h4>
-        <input type="text" class="form-control text-center" id="edit-likes" name="likes" [(ngModel)]="user.likes" #likesField="ngModel" required
-          [disabled]="canEdit" placeholder="{{user.likes}}">
-        <hr>
-      </section>
+        <!-- SECTION ABOUT, LIKES, STORY  -->
+        <!-- @todo add TEXTAREA! instead of one-line input  -->
+        <section class="text-center">
+          <h4 class="text-center section-name"> About me </h4>
+          <textarea rows="5" cols="50" type="text" class="form-control text-center" id="edit-about" name="about" [(ngModel)]="user.about"
+            #aboutField="ngModel" required [disabled]="canEdit" placeholder="{{user.about}}"></textarea>
+          <hr>
+        </section>
 
-      <section class="text-center">
-        <h4 class="section-name"> My Story </h4>
-        <input type="text" class="form-control text-center" id="edit-myStory" name="myStory" [(ngModel)]="user.myStory" #myStoryField="ngModel" required
-        [disabled]="canEdit" placeholder="{{user.myStory}}">
-        <hr>
-        <hr>
-      </section>
+        <section class="text-center">
+          <h4 class="text-center section-name"> What I like </h4>
+          <textarea rows="5" cols="50" type="text" class="form-control text-center" id="edit-likes" name="likes" [(ngModel)]="user.likes"
+            #likesField="ngModel" required [disabled]="canEdit" placeholder="{{user.likes}}"></textarea>
+          <hr>
+        </section>
 
-      <section>
-        <h4 class="section-name"> Default Friends: </h4>
-        <img src="/assets/imgs/ioana.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
-        <img src="/assets/imgs/lennie.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
-        <img src="/assets/imgs/samantha.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
-        <img src="/assets/imgs/miriam.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
-        <img src="/assets/imgs/marketa.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
-        <img src="/assets/imgs/jenny.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
-      </section>
+        <section class="text-center">
+          <h4 class="section-name"> My Story </h4>
+          <textarea rows="5" cols="50" type="text" class="form-control text-center" id="edit-myStory" name="myStory" [(ngModel)]="user.myStory"
+            #myStoryField="ngModel" required [disabled]="canEdit" placeholder="{{user.myStory}}"></textarea>
+          <hr>
+          <hr>
+        </section>
+        <section>
+          <h4 class="section-name"> Default Friends: </h4>
+          <img src="/assets/imgs/ioana.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
+          <img src="/assets/imgs/lennie.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
+          <img src="/assets/imgs/samantha.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
+          <img src="/assets/imgs/miriam.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
+          <img src="/assets/imgs/marketa.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
+          <img src="/assets/imgs/jenny.jpeg" class="img-thumbnail friend-pic" alt="Cinque Terre">
+        </section>
 
 
       </div>
-</form>
+    </form>
     <div class="clearfloat"></div>
   </div>
 </div>
-
-
-
-
-
-
