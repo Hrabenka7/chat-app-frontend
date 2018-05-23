@@ -3,6 +3,7 @@
   <img class="loading" src="/assets/imgs/loading.gif" />
 </div>
 
+
 <!-- else -->
 <div class="card" *ngIf="user">
 
@@ -22,9 +23,19 @@
     <form (ngSubmit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
       <!-- left side of profile page -->
       <div class=" col-md-offset-1 col-md-3" id="profile-left">
-
-        <img src="/assets/imgs/default.png" class="img-thumbnail profile-pic" alt="Cinque Terre">
+        
+        <img [src]="user.picture" class="img-thumbnail profile-pic" alt="Cinque Terre">
+        <div *ngIf="!canEdit" class="text-center">
+          <input type="file" name="file" (change)="onFileSelected($event)" class="file-upload" />
+          <div class="btn btn-warning btn-upload" (click)="onUpload($event)"> Upload File </div>
+          <div *ngIf="imageUploaded">
+            <p class="skills-alert">
+              <span class="glyphicon glyphicon-alert"></span> New image was uploaded successfuly. </p>
+          </div>
+        </div>
         <hr>
+        
+        
 
         <!-- city of residence -->
         <h4 class="text-center section-name"> City of Residence </h4>

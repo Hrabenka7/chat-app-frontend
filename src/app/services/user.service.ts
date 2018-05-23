@@ -3,13 +3,14 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 
 import { environment } from '../../environments/environment';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class UserService {
 
   private baseUrl = environment.apiUrl + '/profile';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
 // ####################################### GET ONE ######################## //
 
@@ -30,20 +31,14 @@ export class UserService {
     return this.httpClient.put(`${this.baseUrl}/me`, user, options)
       .toPromise();
   }
- 
-// ####################################### ADD NEW SKILL ######################## //
 
-  addSkill(newSkill): Promise<any> {
+  uploadPicture(fd): Promise<any> {
     const options = {
       withCredentials: true
     };
-
-    const data = {
-      newSkill
-    };
-
-    return this.httpClient.put(`${this.baseUrl}/edit-my-skills`, data, options)
-      .toPromise();
+    return this.httpClient.put(`${this.baseUrl}/me/picture`, fd, options)
+      .toPromise()
+      .then((data) => this.authService.setUser(data));
   }
 
 }

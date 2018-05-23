@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
   idUser: string;
   canEdit = true;
   newSkill: string;
+  selectedFile: File = null;
+  imageUploaded = false;
 
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) { }
@@ -53,6 +55,21 @@ export class ProfileComponent implements OnInit {
 
   handleEditClick() {
     this.canEdit = !this.canEdit;
+  }
+
+  onFileSelected(event) {
+    this.selectedFile = <File>event.target.files[0];
+  }
+
+  onUpload(event) {
+    const fd = new FormData();
+    fd.append('image', this.selectedFile, this.selectedFile.name);
+    this.userService.uploadPicture(fd)
+      .then((result) => {
+        this.imageUploaded = true;
+        this.user.picture = result.picture;
+        console.log(result);
+      });
   }
 
 }

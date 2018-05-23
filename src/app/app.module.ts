@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core'; // decorator
 import { FormsModule } from '@angular/forms'; // builds template driven forms (includes NgModel)
 import { HttpClientModule } from '@angular/common/http'; // talks to a server
 import { RouterModule, Routes } from '@angular/router'; // adds router directives and providers. */
-
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+import * as  Cloudinary from 'cloudinary-core';
 // COMPONENTS (declarations)
 import { AppComponent } from './app.component';
  // --pages
@@ -50,7 +51,8 @@ const routes:  Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'marketas' })
   ],
   providers: [AuthService, RequireUserGuardService, UserService /* RequireAnonGuardService, InitAuthGuardService */],
   bootstrap: [AppComponent]
