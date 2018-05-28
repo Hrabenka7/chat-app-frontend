@@ -1,10 +1,31 @@
-// THIS GUARD IS NOT USED YET
-
 import { Injectable } from '@angular/core';
+import { CanActivate } from '@angular/router';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
-export class RequireAnonGuardService {
+export class RequireAnonGuardService implements CanActivate {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
+
+  canActivate(): Promise<boolean> {
+    return this.authService.me()
+      .then((user) => {
+        if (!user) {
+          return true;
+        } else {
+          this.router.navigate(['/chat']);
+          return false;
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        return false;
+      });
+  }
 
 }

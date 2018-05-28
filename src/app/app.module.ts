@@ -21,18 +21,16 @@ import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 
 // GUARDS (providers)
-
-// @todo SOLVE "guard is not a function" error in console
-/* import { InitAuthGuardService } from './guards/init-auth-guard.service';
- import { RequireAnonGuardService } from './guards/require-anon-guard.service'; */
+import { InitAuthGuardService } from './guards/init-auth-guard.service';
+import { RequireAnonGuardService } from './guards/require-anon-guard.service';
 import { RequireUserGuardService } from './guards/require-user-guard.service';
 
 // Routes for <router-outlet>
 // The canActivate method returns a boolean indicating whether or not navigation to a route should be allowed.
 const routes:  Routes = [
-  { path: '', component: HomepageComponent, /*  canActivate: [RequireAnonGuardService] */},
+  { path: '', component: HomepageComponent,  canActivate: [RequireAnonGuardService]},
   { path: 'chat', component: ChatComponent, canActivate: [RequireUserGuardService] },
-  { path: 'profile/:id', component: ProfileComponent, canActivate: [RequireUserGuardService]}
+  { path: 'profile/:id', component: ProfileComponent, canActivate: [InitAuthGuardService]}
 ];
 
 
@@ -54,7 +52,7 @@ const routes:  Routes = [
     RouterModule.forRoot(routes),
     CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'marketas' })
   ],
-  providers: [AuthService, RequireUserGuardService, UserService /* RequireAnonGuardService, InitAuthGuardService */],
+  providers: [AuthService, UserService, RequireUserGuardService, RequireAnonGuardService, InitAuthGuardService],
   bootstrap: [AppComponent]
 })
 

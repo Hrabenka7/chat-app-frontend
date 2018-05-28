@@ -1,10 +1,9 @@
-// THIS GUARD IS NOT USED YET
-
 import { Injectable } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { CanActivate } from '@angular/router';
 
 @Injectable()
-export class InitAuthGuardService {
+export class InitAuthGuardService implements CanActivate {
 
   constructor(private authService: AuthService) { }
 
