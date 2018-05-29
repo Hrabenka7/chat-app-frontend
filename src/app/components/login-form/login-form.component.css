@@ -1,6 +1,6 @@
 
 .form-inline  {
-   margin-top: 20px;
+   padding-top: 20px;
    text-align: right;
    margin-left: 20px;
 }
@@ -23,4 +23,11 @@
 .btn-login:hover{
   background-color: #E6F1DE;
    color: #46A8AA;
+}
+
+
+@media (max-width: 600px) {
+  .form-inline{
+    margin-left: 0;
+  }
 }
